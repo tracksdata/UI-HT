@@ -1,0 +1,51 @@
+1. Decide Container
+    container
+    container-fluid
+
+2. Heading or Page style
+    alert
+3. Text align
+        center
+        right
+        left
+        justify
+4. background or fomt colors
+        - primary
+        - secondary
+        - success
+        - warning
+        - danger
+        - info
+        - dark
+        - light
+
+
+responsive design
+--------------------
+col
+col-xs
+col-md
+col-lg
+col-xl
+col-xxl
+-----------------------------------------------------
+
+
+Forms
+------
+    - form group
+    - form control
+
+
+1. put / create entire form in a div
+2. each firm element should be in separate div 
+
+Note: Wrap up entire form inside a card for better looking
+
+
+
+
+
+
+
+
