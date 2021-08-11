@@ -12,7 +12,7 @@ function jsClock(props) {
        <div class='card-header'>${props}</div>
          <div class='card-body'>
          <div class='card-text'>
-         <span class='badge bg-primary'> ${time}</span>
+         <span class='badge bg-primary'> <h1>${time}</h1></span>
          </div>
          </div>
     </div>
@@ -29,7 +29,7 @@ setInterval(() => {
     indianClock.innerHTML = jsClock('asia/kolkata');
     dubaiClock.innerHTML = jsClock('asia/dubai');
     americanClock.innerHTML = jsClock('america/new_york')
-}, 5000);
+}, 1000);
 
 
 

@@ -1,0 +1,41 @@
+Flow
+------------------------------
+1. Angular.json
+2. main.ts 
+3. app.mudule.ts
+4. AppComponent
+------------------------------
+
+Topics 
+----------------------------------
+1. unserstanding Components 
+2. Data Binding
+    -> property binding - []        
+    -> event binding - ()
+    -> 2- way binding - [()]
+    -> string interpolation - {{}}
+
+2.1 NG Directives
+   ->  attribute directives
+            -> NgStyle
+            -> NgClass
+   ->  structural directives
+            -> ngIf
+            -> ngFor
+  
+
+3. Component Communication
+    -> parent to child
+    -> child to parent
+
+4. forms
+    -> template driven forms 
+    -> reactive forms
+
+5. HTTP server
+6. Routers
+
+----------------------------------------------------
+
+
+
