@@ -20,6 +20,26 @@ export class AppComponent {
   textColor="red";
   bgColor="black"
 
+  imagePath="assets/images/red-i20.png";
+  sourceStation:string ='';
+  personName:string = '';
+
+  f1(data:string){
+
+  }
+
+  f2(colorName:string){
+    this.textColor=colorName;
+  }
+
+  changeCarImage(imageName:string){
+  this.imagePath="assets/images/"+imageName+".png";
+  }
+
+  f3(data2:string){
+    this.personName=data2;
+  }
+
   
 
 

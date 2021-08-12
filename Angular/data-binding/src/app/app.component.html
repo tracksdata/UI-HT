@@ -6,16 +6,78 @@
     <h1>Praveen</h1>
   </div>
 
+  <input type="text" #d1 name="s1" (keyup)="f1(d1.value)">
+
+  <h1>{{d1.value}}</h1>
+
+
+  <hr />
+
+
+  <div>
+
+    <div class="card">
+      <div class="card-image">
+        <img [src]=imagePath height="180" width="500" />
+      </div>
+    </div>
+  </div>
+
+
+  <hr />
+
+  <div>
+    <span>Exterior Color</span>
+    <span>
+      <select name="i20" #carName (change)="changeCarImage(carName.value)">
+        <option value="red-i20">Red</option>
+        <option value="blue-i20">Blue</option>
+        <option value="silver-i20">Silver</option>
+        <option value="copper-i20">Copper</option>
+        <option value="grey-i20">Grey</option>
+
+      </select>
+    </span>
+
+  </div>
+
+  <hr/>
+
+  <br/> <br/>
+
+
+  <hr/>
+  Person Name: <input name="fromSource" #d2 (keyup)="f3(d2.value)"/>
+  <h2>Person Name: {{personName}}</h2>
+
+  <hr/>
+
   
+  Travelling From: <input name="fromSource" [(ngModel)]="sourceStation"/>
+  <hr/>
+  <h2>Source: {{sourceStation}}</h2>
+
+  <br/> <br/>
+
+
+  Text Color: <select name="color" #myColor (change)="f2(myColor.value)">
+    <option value="red">Red</option>
+    <option>Blue</option>
+    <option>Green</option>
+  </select>
+
+  <br />
+  <br />
+
 
 
   <div [style.color]=textColor [style.background-color]=bgColor>
-      <h1>Ruth</h1>
+    <h1>Ruth</h1>
   </div>
 
 
 
 
-  
+
 
 </div>

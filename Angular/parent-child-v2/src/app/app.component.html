@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="card col-12 col-md-6">
+    <div class="card-header">Counter APP</div>
+    <div class="card-body">
+      <div class="row">
+        <div *ngFor="let btn of buttons" class=" col-5 col-md-3 mt-3">
+          <app-buttons [btnLabel]="btn"></app-buttons>
+          <!--
+          <div class="card card-body">
+            <span class="text-center">
+              <h3>{{count}}</h3>
+            </span>
+            <hr/>
+            <button (click)="btnHitsCount()" class="btn btn-primary">{{btn}}</button>
+          </div>
+
+        </div>
+        -->
+
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-center">
+      <h3>Total:0</h3>
+    </div>
+  </div>
+
+
+</div>
