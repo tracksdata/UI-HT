@@ -15,7 +15,7 @@ export class GreetComponent {
   msg:string = ''
 
   @Input()
-  greetingMessage:string = ''
+  greetingMessage:any = null;
 
 
 }
