@@ -22,6 +22,17 @@ Topics
    ->  structural directives
             -> ngIf
             -> ngFor
+
+2.2 . NG Pipes/ Angular Pipes
+    -> Curremcy
+    -> Date
+    -> Decimal
+    -> json
+    -> Lowercase
+    -> uppercase
+    -> percent
+    -> slice
+    -> Async
   
 
 3. Component Communication

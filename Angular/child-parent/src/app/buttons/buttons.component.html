@@ -3,6 +3,9 @@
         <h4>{{count}}</h4>
     </span>
     <hr/>
-    <button (click)="btnHitsCount()" class="btn btn-primary">{{btnLabel}}</button>
+
+    <button [ngClass]="btnLabel<0? 'btn btn-danger':'btn btn-primary'" (click)="btnHitsCount()">{{btnLabel}}</button>
+    
+   <!-- <button class="btn" [ngStyle]="{'background-color':btnLabel<0?'red':'lightblue'}">{{btnLabel}}</button>-->
 
 </div>

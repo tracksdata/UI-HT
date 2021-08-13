@@ -11,7 +11,7 @@ export class AppComponent {
 
 
 
-  buttons = [5, 10, 15, 20, -5, -10, -15, -20];
+  buttons = [5, 10, -15, 20, -5, -10, 15, -20,5,-65];
   totalSum: number = 0;
 
   btnHitsCount() {

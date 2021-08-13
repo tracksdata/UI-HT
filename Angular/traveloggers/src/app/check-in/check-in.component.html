@@ -1,0 +1,168 @@
+<div class="container">
+    <div class="card blue-forms mt-3">
+        <div class="card-body shadow">
+            <h4 class="text-light mb-4">Checkin</h4>
+            <form [formGroup]="checkinIdForm" autocomplete="off">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input type="number" class="form-control form-control-sm" formControlName="bookingId"
+                            min="0" placeholder="booking id" />
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <button class="darkblue-buttons btn-sm" style="color: #fff5fd"
+                            (click)="checkIn()">Checkin</button>
+    
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Checkin details -->
+
+<div *ngIf="!showCheckedIn && checkinRecord " class="container mt-4">
+    <h4 class="fw-bold fst-italic">Checkin Details</h4>
+    <div class="card mb-3 shadow">
+
+        <div class="card-body pink-cards row">
+            <div class="col-2">
+                <h4>{{checkinRecord?.bookingRecord.status}}</h4>
+                <p>Checkin Id: <span class="fw-bold">{{checkinRecord?.checkinId}}</span></p>
+                <p>Flight name: <span class="fw-bold">{{checkinRecord?.bookingRecord.flightInfo.airlineInfo.airlineName}}</span></p>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-4">
+                        <p>Origin: <span class="fw-bold">{{ checkinRecord?.bookingRecord.origin | titlecase}}</span></p>
+                        <p>Destination: <span class="fw-bold"> {{ checkinRecord?.bookingRecord.destination | titlecase}}</span></p>
+                        <p>Total fare: <span class="fw-bold">{{ checkinRecord?.bookingRecord.fare}}</span></p>
+                    </div>
+                    <div class="col-4">
+                         <p>Flight type: <span class="fw-bold">{{ checkinRecord?.bookingRecord.flightInfo.flightType}}</span></p>
+                         <p>Departure: <span class="fw-bold">{{ checkinRecord?.bookingRecord.flightTime}}</span></p>
+                        <p>Flight Date: <span class="fw-bold">{{ checkinRecord?.bookingRecord.flightDate | date}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p>Checkin Date: <span class="fw-bold">{{ checkinRecord?.checkinTime | date}}</span></p>
+                        <p>Checkin Time: <span class="fw-bold">{{ checkinRecord?.checkinTime | date:'shortTime'}}</span>
+                        </p>
+                        <p>Seat number: <span class="fw-bold">{{ checkinRecord?.seatNumber}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card mb-3 shadow pink-cards">
+
+        <div class="card-body">
+            <h5>Primary passenger</h5>
+            <div class="row">
+                <div class="col-3">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.firstName}} {{checkinRecord?.bookingRecord.passenger.lastName}} </p>
+                </div>
+                <div class="col-2">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.gender}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.emailAddress}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.mobileNumber}}</p>
+                </div>
+            </div>
+            <div *ngIf= "checkinRecord?.bookingRecord.passenger.coPassengers.length > 0">
+            <div class="dropdown-divider"></div>
+            <h5 >Co-passengers</h5>
+            <div class="row" *ngFor= "let passenger of passengerRecords; let i= index">
+                <div class="col-3">
+                    <p class="fw-bold">{{i+1}}. {{passenger?.firstName}} {{passenger?.lastName}} </p>
+                </div>
+                <div class="col-2">
+                    <p class="fw-bold">{{passenger?.gender}}</p>
+                </div>
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showCheckedIn && bookingRecord" class="container mt-4">
+    <h4 class="fw-bold fst-italic">Already checkedin</h4>
+
+    <h4 class="fw-bold fst-italic">Checkin Details</h4>
+    <div class="card mb-3 shadow">
+
+        <div class="card-body pink-cards row">
+            <div class="col-2">
+                <h4>{{checkinRecord?.bookingRecord.status}}</h4>
+                <p>Checkin Id: <span class="fw-bold">{{checkinRecord?.checkinId}}</span></p>
+                <p>Flight name: <span class="fw-bold">{{checkinRecord?.bookingRecord.flightInfo.airlineInfo.airlineName}}</span></p>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-4">
+                        <p>Origin: <span class="fw-bold">{{ checkinRecord?.bookingRecord.origin | titlecase}}</span></p>
+                        <p>Destination: <span class="fw-bold"> {{ checkinRecord?.bookingRecord.destination | titlecase}}</span></p>
+                        <p>Total fare: <span class="fw-bold">{{ checkinRecord?.bookingRecord.fare}}</span></p>
+                    </div>
+                    <div class="col-4">
+                         <p>Flight type: <span class="fw-bold">{{ checkinRecord?.bookingRecord.flightInfo.flightType}}</span></p>
+                         <p>Departure: <span class="fw-bold">{{ checkinRecord?.bookingRecord.flightTime}}</span></p>
+                        <p>Flight Date: <span class="fw-bold">{{ checkinRecord?.bookingRecord.flightDate | date}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p>Checkin Date: <span class="fw-bold">{{ checkinRecord?.checkinTime | date}}</span></p>
+                        <p>Checkin Time: <span class="fw-bold">{{ checkinRecord?.checkinTime | date:'shortTime'}}</span>
+                        </p>
+                        <p>Seat number: <span class="fw-bold">{{ checkinRecord?.seatNumber}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card mb-3 shadow pink-cards">
+
+        <div class="card-body">
+            <h5>Primary passenger</h5>
+            <div class="row">
+                <div class="col-3">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.firstName}} {{checkinRecord?.bookingRecord.passenger.lastName}} </p>
+                </div>
+                <div class="col-2">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.gender}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.emailAddress}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="fw-bold">{{checkinRecord?.bookingRecord.passenger.mobileNumber}}</p>
+                </div>
+            </div>
+            <div *ngIf= "checkinRecord?.bookingRecord.passenger.coPassengers.length > 0">
+            <div class="dropdown-divider"></div>
+            <h5 >Co-passengers</h5>
+            <div class="row" *ngFor= "let passenger of passengerRecords; let i= index">
+                <div class="col-3">
+                    <p class="fw-bold">{{i+1}}. {{passenger?.firstName}} {{passenger?.lastName}} </p>
+                </div>
+                <div class="col-2">
+                    <p class="fw-bold">{{passenger?.gender}}</p>
+                </div>
+
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+</div>

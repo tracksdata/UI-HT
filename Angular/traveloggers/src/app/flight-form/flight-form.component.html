@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="card blue-forms mt-3">
+    <div class="card-body  shadow">
+      <div class="d-flex justify-content-between mb-3">
+        <h4 class="text-light">Search Flight</h4>
+        <button class="darkblue-buttons btn-sm" style="color: #fff5fd" (click)="toggleForm()">
+          {{showFlightNumberForm ? "search by traveller" : "search by flight number"}}
+        </button>
+      </div>
+      <form *ngIf=!showFlightNumberForm [formGroup]="searchFlightForm" autocomplete="off">
+        <div class="row">
+          <div class="col-3">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-sm" formControlName="origin"
+                [ngClass]="{'is-invalid': fc.origin.errors?.required && isSubmitted}" placeholder="origin" />
+              <div class="invalid-feedback" *ngIf="fc.origin.errors?.required && isSubmitted">Origin required</div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-sm" formControlName="destination"
+                [ngClass]="{'is-invalid': fc.destination.errors?.required && isSubmitted}" placeholder="destination" />
+
+              <div class="invalid-feedback" *ngIf="fc.destination.errors?.required && isSubmitted">Destination required
+              </div>
+
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <input type="date" class="form-control form-control-sm" formControlName="flightDate"
+                [ngClass]="{'is-invalid': fc.flightDate.errors?.required && isSubmitted}" placeholder="flightDate" />
+
+              <div class="invalid-feedback" *ngIf="fc.flightDate.errors?.required && isSubmitted">Flight date required
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <input type="number" class="form-control form-control-sm" formControlName="travellers" min="0"
+                [ngClass]="{'is-invalid': fc.travellers.errors?.required && isSubmitted}" placeholder="travellers" />
+              <div class="invalid-feedback" *ngIf="fc.travellers.errors?.required && isSubmitted">Travellers required
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="d-flex mt-3 justify-content-center">
+          <button class="darkblue-buttons btn-sm w-25" style="color: #fff5fd" (click)="search()">Search Flights</button>
+
+        </div>
+
+      </form>
+
+      <form *ngIf=showFlightNumberForm [formGroup]="searchByFlightNumberForm" autocomplete="off">
+
+        <div class="row">
+          <div class="col-2">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-sm" formControlName="origin" [ngClass]="{'is-invalid': fb.origin.errors?.required && isSubmitted}" placeholder="origin" />
+              <div class="invalid-feedback" *ngIf="fb.origin.errors?.required && isSubmitted">Origin required</div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-sm" formControlName="destination" [ngClass]="{'is-invalid': fb.destination.errors?.required && isSubmitted}"
+                placeholder="destination" />
+                <div class="invalid-feedback" *ngIf="fb.destination.errors?.required && isSubmitted">Destination required
+                </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <input type="date" class="form-control form-control-sm" formControlName="flightDate" [ngClass]="{'is-invalid': fb.flightDate.errors?.required && isSubmitted}"
+                placeholder="flightDate" />
+                <div class="invalid-feedback" *ngIf="fb.flightDate.errors?.required && isSubmitted">Flight date required
+                </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-sm" formControlName="flightNumber" [ngClass]="{'is-invalid': fb.flightNumber.errors?.required && isSubmitted}"
+                placeholder="flightNumber" />
+                <div class="invalid-feedback" *ngIf="fb.flightNumber.errors?.required && isSubmitted">Flight number required
+                </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <input type="number" class="form-control form-control-sm" formControlName="travellers" min="0"
+                [ngClass]="{'is-invalid': fb.travellers.errors?.required && isSubmitted}" placeholder="travellers" />
+              <div class="invalid-feedback" *ngIf="fb.travellers.errors?.required && isSubmitted">Travellers required
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="d-flex mt-3 justify-content-center">
+          <button class="darkblue-buttons btn-sm w-25" style="color: #fff5fd" (click)="searchFlightNumberForm()">Search
+            Flight</button>
+
+        </div>
+      </form>
+
+
+
+
+    </div>
+  </div>
+
+  <!-- <div class="d-flex mt-3 justify-content-center btn-sm">
+      <button class="darkblue-buttons btn-sm w-25" style="color: #fff5fd" [routerLink]="['/bookingid']" >Search by Booking Id</button>    
+</div> -->
+
+  <div class="container mt-4">
+    <app-flight-card *ngFor="let flight of flightArray" [flightData]=flight></app-flight-card>
+
+  </div>
+
+  <div *ngIf="flightRecord" class="container mt-4">
+    <h4 class="fw-bold fst-italic">No flight found in record</h4>
+  </div>
+
+</div>

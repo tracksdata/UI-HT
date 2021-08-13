@@ -1,0 +1,39 @@
+
+<div class="container">
+    <h4 class="fw-bold fst-italic text-end">Booking Successfully Done</h4>
+    <div class="card mb-3 shadow">
+        
+        <div class="card-body pink-cards row">
+            <div class="col-2">
+                <h3>{{bookingAllData?.status}}</h3>
+                <p>Booking Id: <span class="fw-bold">{{bookingAllData?.bookingId}}</span></p>
+                <p>Flight name: <span class="fw-bold">{{bookingAllData?.flightInfo.airlineInfo.airlineName}}</span></p>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-3">
+                        <p>Origin: <span class="fw-bold">{{ bookingAllData?.origin | titlecase}}</span></p>
+                        <p>Destination: <span class="fw-bold"> {{ bookingAllData?.destination | titlecase}}</span></p>
+                        <p>Total fare: <span class="fw-bold">{{ bookingAllData?.fare}}</span></p>
+                    </div>
+                    <div class="col-3">
+                        <p>Flight type: <span class="fw-bold">{{ bookingAllData?.flightInfo.flightType}}</span></p>
+                        <p>Departure: <span class="fw-bold">{{ bookingAllData?.flightTime}}</span></p>
+                        <p>Flight Date: <span class="fw-bold">{{ bookingAllData?.flightDate | date}}</span></p>
+                    </div>
+                    <div class="col-3">
+                        <p>Booking Date: <span class="fw-bold">{{ bookingAllData?.bookingDate | date}}</span></p>
+                        <p>Booking Time: <span class="fw-bold">{{ bookingAllData?.bookingDate | date:'shortTime'}}</span></p>
+                        <p>Travellers: <span class="fw-bold">{{ bookingAllData?.passenger.coPassengers.length + 1}}</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-2 align-items-center justify-content-center d-flex">
+               
+                <button class="darkblue-buttons w-75 fw-bold" style="color: #fff5fd" (click)="checkIn()">check In</button>
+            </div> -->
+        </div>
+
+    </div>
+</div>

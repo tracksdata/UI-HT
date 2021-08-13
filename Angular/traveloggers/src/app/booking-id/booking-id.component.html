@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="card blue-forms mt-3 ">
+        <div class="card-body shadow">
+            <h4 class="text-light mb-4">Search Booking</h4>
+            <form [formGroup]="bookingIdForm" autocomplete="off">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <input type="number" class="form-control form-control-sm" formControlName="bookingId"
+                            min="0" placeholder="booking id" />
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <button class="darkblue-buttons btn-sm" style="color: #fff5fd"
+                            (click)="searchByBookingId()">Search</button>
+    
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Booking details -->
+<div *ngIf=showBookingDetails class="container mt-4">
+    <h4 class="fw-bold fst-italic">Booking Details</h4>
+    <div class="card mb-3 shadow">
+
+        <div class="card-body pink-cards row">
+            <div class="col-2">
+                <h4>{{bookingRecord?.status}}</h4>
+                <p>Booking Id: <span class="fw-bold">{{bookingRecord?.bookingId}}</span></p>
+                <p>Flight name: <span class="fw-bold">{{bookingRecord?.flightInfo.airlineInfo.airlineName}}</span></p>
+            </div>
+            <div class="col-8">
+                <div class="row">
+                    <div class="col-4">
+                        <p>Origin: <span class="fw-bold">{{ bookingRecord?.origin | titlecase}}</span></p>
+                        <p>Destination: <span class="fw-bold"> {{ bookingRecord?.destination | titlecase}}</span></p>
+                        <p>Total fare: <span class="fw-bold">{{ bookingRecord?.fare}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p>Flight type: <span class="fw-bold">{{ bookingRecord?.flightInfo.flightType}}</span></p>
+                        <p>Departure: <span class="fw-bold">{{ bookingRecord?.flightTime}}</span></p>
+                        <p>Flight Date: <span class="fw-bold">{{ bookingRecord?.flightDate | date}}</span></p>
+                    </div>
+                    <div class="col-4">
+                        <p>Booking Date: <span class="fw-bold">{{ bookingRecord?.bookingDate | date}}</span></p>
+                        <p>Booking Time: <span class="fw-bold">{{ bookingRecord?.bookingDate | date:'shortTime'}}</span>
+                        </p>
+                        <p>Travellers: <span class="fw-bold">{{ bookingRecord?.passenger.coPassengers.length +
+                                1}}</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf= "bookingRecord?.status === 'CONFIRMED'" class="col-2 align-items-center justify-content-center ">
+
+                <!-- <button class="darkblue-buttons w-75 fw-bold" style="color: #fff5fd" (click)="checkIn()">check
+                    In</button> -->
+                <button class="darkblue-buttons w-75 fw-bold mt-2" style="color: #fff5fd" (click)="cancel()">Cancel booking</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card mb-3 shadow pink-cards">
+
+        <div class="card-body">
+            <h5>Primary passenger</h5>
+            <div class="row">
+                <div class="col-3">
+                    <p class="fw-bold">{{bookingRecord?.passenger.firstName}} {{bookingRecord?.passenger.lastName}} </p>
+                </div>
+                <div class="col-2">
+                    <p class="fw-bold">{{bookingRecord?.passenger.gender}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="fw-bold">{{bookingRecord?.passenger.emailAddress}}</p>
+                </div>
+                <div class="col-3">
+                    <p class="fw-bold">{{bookingRecord?.passenger.mobileNumber}}</p>
+                </div>
+            </div>
+            <div *ngIf= "bookingRecord?.passenger.coPassengers.length > 0">
+            <div class="dropdown-divider"></div>
+            <h5 >Co-passengers</h5>
+            <div class="row" *ngFor= "let passenger of passengerRecords; let i= index">
+                <div class="col-3">
+                    <p class="fw-bold">{{i+1}}. {{passenger?.firstName}} {{passenger?.lastName}} </p>
+                </div>
+                <div class="col-2">
+                    <p class="fw-bold">{{passenger?.gender}}</p>
+                </div>
+
+                <!-- <div *ngIf= "bookingRecord?.status === 'CONFIRMED'" class="col-3">
+                    <button class="darkblue-buttons fw-bold " style="color: #fff5fd" (click)="cancel()">Remove passenger</button>
+                </div> -->
+
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!showBookingDetails && bookingRecord" class="container mt-4">
+    <h4 class="fw-bold fst-italic">Booking Cancelled</h4>
+    <h5>Booking id: {{bookingRecord?.bookingId}} has been cancelled..</h5>
+</div>
+
+<div *ngIf="noBookingRecord" class="container mt-4">
+    <h4 class="fw-bold fst-italic">No Booking record found</h4>
+</div>

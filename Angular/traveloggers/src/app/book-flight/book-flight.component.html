@@ -1,0 +1,249 @@
+<!-- <p>book-flight works!</p -->
+<!-- <app-flight-card  [flightAllData]=flightAllData></app-flight-card> -->
+<!-- <div class="card col-6">
+    <div class="card-header bg-dark text-light">{{flightAllData?.flightInfo.airlineInfo.airlineName}}</div>
+
+    <div class="card-body bg-warning">
+        <p>{{flightAllData?.flightInfo.flightNumber}}</p>
+        <p>{{ flightAllData?.flightInfo.flightType}}</p>
+        <p>{{ flightAllData?.flightTime}}</p>
+        <p>{{ flightAllData?.flightInfo.seatCapacity}}</p>
+        <p>{{ flightAllData?.id}}</p>
+        <hr/>
+    </div>
+</div> -->
+<div class="container">
+    <div class="card mb-3 shadow">
+        <div class="card-body pink-cards row">
+            <div class="col-2">
+                <h3>{{flightAllData?.flightInfo.flightNumber}}</h3>
+                <p  class="fw-bold">{{flightAllData?.flightInfo.airlineInfo.airlineName}}</p>
+            </div>
+            <div class="col-10">
+                <div class="row">
+                    <div class="col-3">
+                        <p>Origin: <span class="fw-bold">{{ flightAllData?.origin | titlecase}}</span></p>
+                        <p>Destination: <span class="fw-bold"> {{ flightAllData?.destination | titlecase}}</span></p>
+                    </div>
+                    <div class="col-3">
+                        <p>Date: <span class="fw-bold">{{ flightAllData?.flightDate | date}}</span></p>
+                        <p>Departure: <span class="fw-bold">{{ flightAllData?.flightTime}}</span></p>
+                    </div>
+                    <div class="col-3">
+                        <p>Flight Type: <span class="fw-bold">{{ flightAllData?.flightInfo.flightType}}</span></p>
+                        <p>Available seats: <span class="fw-bold">{{ flightAllData?.inventory.count}}</span></p>
+                    </div>
+                    <div class="col-3">
+                        <p>Fare: <span class="fw-bold">{{ flightAllData?.fare.fare | currency:flightAllData?.fare.currency}}</span></p>
+                        <p>Duration: <span class="fw-bold">{{flightAllData?.duration}}</span></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Form for entering passenger details -->
+
+<div class="container">
+    <form [formGroup]="bookingForm" autocomplete="off">
+        <div class="card card-body mb-3 blue-forms shadow">
+            <h4 class="text-light">Primary Passenger</h4>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group mb-2">
+                        <input type="text" formControlName="firstName" placeholder="first name"
+                            class="form-control form-control-sm" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="email" formControlName="emailAddress" placeholder="email"
+                            class="form-control form-control-sm" />
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group mb-2">
+                        <input type="text" formControlName="lastName" placeholder="last name"
+                            class="form-control form-control-sm" />
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="number" formControlName="mobileNumber" placeholder="mobile number" min="0" max="10"
+                          maxlength="10"  class="form-control form-control-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="row ps-3 mt-2">
+                <div class="form-check col-1 me-3">
+                    <input class="form-check-input" type="radio" value="Male" id="gMale-prim"
+                        formControlName="gender" />
+                    <label for="gMale-prim " class="form-check-label text-light">Male</label>
+                </div>
+                <div class="form-check col-1">
+                    <input class="form-check-input" type="radio" value="Female" id="gFemale-prim"
+                        formControlName="gender" />
+                    <label for="gFemale-prim " class="form-check-label text-light">Female</label>
+                </div>
+            </div>
+<!-- <div class="d-flex justify-content-end">
+    <button class="darkblue-buttons btn-sm" style="color: #fff5fd" (click)="addCoPassenger()">Add co-passenger</button>
+</div> -->
+        </div>
+
+        <!-- Add co-passenger -->
+
+        <div formArrayName="coPassengers">
+            <div class="card card-body mb-3 blue-forms shadow" *ngFor="let copass of coPassenger.controls; let cop = index">
+                <h4 class="text-light">Co-Passenger {{cop +1}}</h4>
+                <div [formGroupName]= "cop">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group mb-2">
+                                <input type="text" formControlName="firstName" placeholder="first name"
+                                    class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group mb-2">
+                                <input type="text" formControlName="lastName" placeholder="last name"
+                                    class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ps-3 mt-2">
+                        <div class="form-check col-1 me-3">
+                            <input class="form-check-input" formControlName="gender" type="radio" value="male"
+                            id="{{cop}}gmale">
+                        <label class="form-check-label text-light" for="{{cop}}gmale">Male</label>
+                        </div>
+                        <div class="form-check col-1">
+                            <input class="form-check-input" formControlName="gender" type="radio" value="female"
+                                    id="{{cop}}gfemale">
+                                <label class="form-check-label text-light" for="{{cop}}gfemale">Female</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </form>
+    <div class="container mt-3 px-0 d-flex justify-content-end">
+        <button class=" darkblue-buttons btn-sm mb-5" style="color: #fff5fd" (click)="submitForm()">Confirm Booking</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <div class="row">
+    <div class="card col-6">
+        <div class="card-body bg-secondary shadow">
+
+            <form [formGroup]="bookingForm" autocomplete="off"> -->
+
+                <!-- <div class="form-group"> -->
+                    <!-- <label for="">FirstName</label> -->
+                    <!-- <input type="text" formControlName="firstName" placeholder="first name" class="form-control" />
+
+                </div>
+                <br>
+                <div class="form-group"> -->
+                    <!-- <label for="">Last Name</label> -->
+                    <!-- <input type="text" formControlName="lastName" placeholder="last name" class="form-control" />
+
+                </div>
+                <br>
+                <div> -->
+                    <!-- <label for="">Email</label> -->
+                    <!-- <input type="email" formControlName="email" placeholder="email" class="form-control" />
+                </div>
+                <br>
+
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="gender" type="radio" value="male"
+                        id="primary-gmale">
+                    <label class="form-check-label" for="primary-gmale">Male</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" formControlName="gender" type="radio" value="female"
+                        id="primary-gfemale">
+                    <label class="form-check-label" for="primary-gfemale">Female</label>
+                </div>
+
+                <br>
+                <div> -->
+                    <!-- <label for="">Mobile Number</label> -->
+                    <!-- <input type="number" formControlName="mobileNumber" placeholder="mobile number"
+                        class="form-control" />
+                </div> -->
+
+
+
+                <!-- <div class="form-group mt-4 text-center">
+                    <div class="d-grid">
+                        <button class="btn btn-primary" (click)="addCoPassenger()">Add co-passenger</button>
+
+                    </div>
+                </div>
+
+                <br> -->
+
+                <!-- <div formArrayName="coPassengers">
+
+                    <div *ngFor="let copass of coPassenger.controls; let cop = index">
+                        <br>
+                        <div class="card bg-warning shadow" [formGroupName]="cop">
+                            <h2>Co-Passenger {{cop+1}}</h2>
+                            <div class="form-group"> -->
+                                <!-- <label for="">FirstName</label> -->
+                                <!-- <input type="text" formControlName="firstName" placeholder="first name"
+                                    class="form-control" />
+
+                            </div>
+                            <br>
+                            <div class="form-group"> -->
+                                <!-- <label for="">Last Name</label> -->
+                                <!-- <input type="text" formControlName="lastName" placeholder="last name"
+                                    class="form-control" />
+
+                            </div>
+                            <br> -->
+                            <!-- <div>
+                        <label for="">Gender</label>
+                        <input type="radio" name="gender" value="male"  id="gmale" formControlName="gender" class="form-control" />
+                        <input type="radio" name="gender" value="female" id="gmale" formControlName="gender" class="form-control" />
+                    </div> -->
+                            <!-- <div class="form-check">
+                                <input class="form-check-input" formControlName="gender" type="radio" value="male"
+                                    id="{{cop}}gmale">
+                                <label class="form-check-label" for="{{cop}}gmale">Male</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" formControlName="gender" type="radio" value="female"
+                                    id="{{cop}}gfemale">
+                                <label class="form-check-label" for="{{cop}}gfemale">Female</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-4 text-center">
+                    <div class="d-grid">
+                        <button class="btn btn-primary" (click)="submitForm()">SUBMIT</button>
+
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div> -->

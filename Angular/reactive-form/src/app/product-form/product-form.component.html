@@ -1,0 +1,60 @@
+<p>Product Form</p>
+
+
+<hr />
+
+
+
+<pre>
+
+<h3>{{prodForm.status}}</h3>
+
+</pre>
+
+<hr />
+<div class="col-12 col-md-6">
+    <form [formGroup]="prodForm" (ngSubmit)="handleSubmit()" autocomplete="off">
+        <div class="form-group">
+            <label>Product ID</label>
+            <input type="text" name="pid" formControlName="productId" class="form-control" />
+            <span *ngIf="isSubmited && fc().productId.errors?.required" class="text-danger">Product id required</span>
+            <span *ngIf="isSubmited && fc().productId.errors?.minlength" class="text-danger">Product length must be motre than 3 letters</span>
+
+        </div>
+
+        <div>
+            <label>Product Name</label>
+            <input type="text" name="pid" formControlName="productName" class="form-control" />
+            <span *ngIf="isSubmited && fc().productName.errors?.required" class="text-danger">Product name required</span>
+
+        </div>
+
+
+        <div>
+            <label>Stock Date</label>
+            <input type="text" name="pid" formControlName="stockDate" class="form-control" />
+            <span *ngIf="isSubmited && fc().stockDate.errors?.required" class="text-danger">Stock Date required</span>
+            <span *ngIf="isSubmited && fc().stockDate.errors?.invalidDate" class="text-danger">Stock Date  must be in DD-MM-YYYY format</span>
+
+
+        </div>
+
+        <div>
+            <label>Price</label>
+            <input type="text" name="pid" formControlName="price" class="form-control" />
+            <span *ngIf="isSubmited && fc().price.errors?.required" class="text-danger">Product price required</span>
+
+        </div>
+
+        <div>
+            <label>Descriiption</label>
+            <input type="text" name="pid" formControlName="description" class="form-control" />
+            <span *ngIf="isSubmited && fc().description.errors?.required" class="text-danger">Product description required</span>
+
+        </div>
+        <div class="mt-3 text-center">
+            <button class="btn btn-primary">Save</button>
+        </div>
+    </form>
+
+</div>

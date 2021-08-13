@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+// colour codes
+// fff5fd very light pink
+// ff96ad pink
+// 005a8d blue for form
+// 022e57 dark blue for buttons
+
+.light-pink-bg
+{
+background-color: #E0FFFF;
+border-radius:0.75em;
+}
+
+.blue-forms{
+    background-color: #82CAFA;
+    border-radius:0.75em;
+}
+
+.darkblue-buttons {
+    background-color: #307D7E;
+    border-radius:0.4em;
+}
+
+.pink-cards {
+    background-color: #BDEDFF;
+    border-radius:0.75em;
+}

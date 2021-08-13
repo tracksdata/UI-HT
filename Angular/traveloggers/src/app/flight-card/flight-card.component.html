@@ -1,0 +1,36 @@
+<div class="card mb-3 shadow">
+    <div class="card-body pink-cards row">
+        <div class="col-2">
+            <h3>{{flightData.flightInfo.flightNumber}}</h3>
+            <p><span class="fw-bold">{{flightData.flightInfo.airlineInfo.airlineName}}</span></p>
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-6">
+                    <p>Flight Type: <span class="fw-bold">{{ flightData.flightInfo.flightType}}</span></p>
+                    <p>Available seats: <span class="fw-bold">{{ flightData.inventory.count}}</span></p>
+                </div>
+                <div class="col-6">
+                    <p>Departure: <span class="fw-bold">{{ flightData.flightTime}}</span></p>
+                    <p>Fare: <span class="fw-bold">{{ flightData.fare.fare | currency:flightData.fare.currency}}</span></p>
+                </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <h5 class="text-right">Duration: {{flightData.duration}}</h5>
+        </div>
+        <div class="col-2 align-items-center justify-content-center d-flex">
+            <button class="darkblue-buttons w-75 fw-bold" style="color: #fff5fd" [routerLink]="['/find',flightData.id]">Book</button>
+        </div>
+    </div>
+    <!-- 
+    flightname
+    flight number
+
+    flight time
+    duration
+    fare
+    available seats
+    flight type
+ -->
+
+</div>
